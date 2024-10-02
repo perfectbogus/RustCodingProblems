@@ -1,0 +1,8 @@
+[package]
+name = "coding-problems"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "longest_palindrome"
+path = "problems/medium/longest_palindrome.rs"
