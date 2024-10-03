@@ -3,13 +3,6 @@ Problem:
 Given a string S, return the longest palindromic substring in S
  */
 
-pub fn longest_palindrome(s: String) -> String {
-    let left_s: &str;
-    let right_s: &str;
-    let size  = s.chars().count();
-    String::from("")
-}
-
 pub fn is_palindrome(s: &str) -> bool {
     let chars: Vec<char> = s.chars().collect();
     let mut low = 0;
@@ -24,12 +17,51 @@ pub fn is_palindrome(s: &str) -> bool {
     true
 }
 
+pub fn expand_around_center(chars: &[char], mut left: i32, mut right: i32) -> String {
+    println!("left: {}, right: {}", left, right);
+    while left >= 0 && right < chars.len() as i32 && chars[left as usize] == chars[right as usize] {
+        println!("expand char[left]: {}, char[right]: {}", chars[left as usize], chars[right as usize]);
+        left -= 1;
+        right += 1;
+    }
+    chars[(left+1) as usize..right as usize].iter().collect()
+}
+
+pub fn longest_palindrome(s: String) -> String {
+    let chars: Vec<char> = s.chars().collect();
+    let mut longest = String::new();
+    let size = chars.len() as i32;
+
+    for i in 0..size {
+        // Check for odd-length palindromes
+        println!("check odd pal");
+        let odd_pal = expand_around_center(&chars, i, i);
+        println!("odd pal: {}", odd_pal);
+        if odd_pal.len() > longest.len() {
+            longest = odd_pal;
+        }
+
+        // Check for even-length palindromes
+        if i < size - 1 {
+            println!("check even pal");
+            let even_pal = expand_around_center(&chars, i, i+1);
+            println!("even pal: {}", even_pal);
+            if even_pal.len() > longest.len() {
+                longest = even_pal;
+            }
+        }
+    }
+
+    longest
+}
 
 fn main() {
 
-    let s = "radar";
-    println!("s: {} is palindrome: {}", s, is_palindrome(s));
+    let s = String::from("radar");
+    //println!("s: {} is palindrome: {}", s, is_palindrome(s));
 
+    let longest = longest_palindrome(s);
+    println!("longest: {}", longest);
 
     //
     // let test_cases = vec![
