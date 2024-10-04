@@ -10,3 +10,7 @@ path = "problems/medium/longest_palindrome.rs"
 [[bin]]
 name = "letter_combination"
 path = "problems/medium/letter_combination.rs"
+
+[[bin]]
+name = "valid_parentheses"
+path = "problems/valid_parentheses.rs"
