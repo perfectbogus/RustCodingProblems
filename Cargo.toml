@@ -6,3 +6,7 @@ edition = "2021"
 [[bin]]
 name = "longest_palindrome"
 path = "problems/medium/longest_palindrome.rs"
+
+[[bin]]
+name = "letter_combination"
+path = "problems/medium/letter_combination.rs"
