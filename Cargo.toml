@@ -14,3 +14,7 @@ path = "problems/medium/letter_combination.rs"
 [[bin]]
 name = "valid_parentheses"
 path = "problems/valid_parentheses.rs"
+
+[[bin]]
+name = "binary_tree_level_order_traversal"
+path = "problems/b_t_level_order_traversal.rs"
